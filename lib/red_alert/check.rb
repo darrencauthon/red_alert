@@ -6,7 +6,10 @@ module RedAlert
     end
 
     def self.fire!
-      raise @checks.inspect
+      raise "no checks exist" unless @checks
+      @checks.each do |check|
+        check.new.check!
+      end
     end
   end
 end
