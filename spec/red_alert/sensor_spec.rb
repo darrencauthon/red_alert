@@ -11,7 +11,9 @@ describe RedAlert::Sensor do
         end
 
         it "should throw a sensors defined error" do
-          ->() { RedAlert::Sensor.scan! }.must_raise RuntimeError
+          exception = ->() { RedAlert::Sensor.scan! }.exception_raised
+          exception.is_a? RuntimeError
+          exception.message.must_equal "no sensors defined"
         end
       end
     end
