@@ -7,9 +7,7 @@ module RedAlert
 
     def self.scan!
       raise "no sensors defined" if no_sensors_exist?
-      #@sensors.each do |sensor|
-        #sensor.new.scan!
-      #end
+      @sensors.each { |s| s.new.scan! }
     end
 
     def self.no_sensors_exist?
