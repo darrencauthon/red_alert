@@ -6,7 +6,9 @@ module RedAlert
     end
 
     def self.scan!
-      raise "no sensors defined"
+      if @sensors.nil? || @sensors.count == 0
+        raise "no sensors defined"
+      end
       #raise "no sensors defined" unless @sensors
       #@sensors.each do |sensor|
         #sensor.new.scan!

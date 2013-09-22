@@ -17,5 +17,21 @@ describe RedAlert::Sensor do
         end
       end
     end
+
+    describe "sensors have been defined" do
+
+      let(:sensor) do
+        RedAlert::Sensor.new
+      end
+
+      before do
+        the_sensors_are [sensor.class]
+      end
+
+      it "should not throw a sensors defined error" do
+        exception = ->() { RedAlert::Sensor.scan! }.exception_raised
+        exception.nil?.must_equal true
+      end
+    end
   end
 end
